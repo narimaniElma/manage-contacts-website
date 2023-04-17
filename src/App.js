@@ -1,13 +1,17 @@
-import './App.css';
+import { useState } from "react";
+
+import {Navbar, Contacts, AddContact, EditContact, ViewContact} from "./components";
+
+import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const [contacts, setContacts] = useState([]);
+
   return (
     <div className="App">
-      <h3> Manage contacts</h3>
-
-      {/* just for test if font awesome and bootstrap will work */}
-      <button className='btn btn-primary'>button</button>
-      <span className='fa fa-user'></span>
+      <Navbar />
+      <Contacts getContacts={contacts} loading={loading}/>
     </div>
   );
 }
