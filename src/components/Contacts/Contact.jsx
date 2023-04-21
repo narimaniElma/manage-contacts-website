@@ -1,6 +1,6 @@
 import { CURRENTLINE, CYAN, ORANGE, PURPLE, RED } from "../../helpers/Colors";
 
-const Contact = () => {
+const Contact = ({people}) => {
   return (
     <div className="col-md-6">
       <div style={{ backgroundColor: CURRENTLINE }} className="card my-2">
@@ -9,7 +9,7 @@ const Contact = () => {
             <div className="col-md-4 col-sm-4">
               <img
                 src="https://via.placeholder.com/200"
-                alt=""
+                alt={people.name}
                 style={{ border: `1px solid ${PURPLE}` }}
                 className="img-fluid rounded"
               />
@@ -19,21 +19,21 @@ const Contact = () => {
                 <li className="list-group-item list-group-item-dark">
                   Last name:{"  "}
                   <span className="fw-bold">
-                    Younes ghorbani
+                    {people.fullname}
                   </span>
                 </li>
 
                 <li className="list-group-item list-group-item-dark">
                   Mobile  :{"  "}
                   <span className="fw-bold">
-                    09350001122
+                  {people.mobile}
                   </span>
                 </li>
 
                 <li className="list-group-item list-group-item-dark">
                   Email :{"  "}
                   <span className="fw-bold">
-                    younes.gh@chmail.ir
+                  {people.email}
                   </span>
                 </li>
               </ul>

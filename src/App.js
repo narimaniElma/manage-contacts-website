@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import axios from "axios";
 
 import {
   Navbar,
@@ -14,6 +15,31 @@ import "./App.css";
 function App() {
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        const { data: contactData } = await axios.get(
+          "http://localhost:9000/contacts"
+        );
+        const { data: groupsData } = await axios.get(
+          "http://localhost:9000/groups"
+        );
+        setContacts(contactData);
+        setGroups(groupsData);
+
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
