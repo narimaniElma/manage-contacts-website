@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import axios from "axios";
+import { getAllContacts, getAllGroups } from "./services/contactService"
 
 import {
   Navbar,
@@ -22,12 +22,8 @@ function App() {
       try {
         setLoading(true);
 
-        const { data: contactData } = await axios.get(
-          "http://localhost:9000/contacts"
-        );
-        const { data: groupsData } = await axios.get(
-          "http://localhost:9000/groups"
-        );
+        const { data: contactData } = await getAllContacts();
+        const { data: groupsData } = await getAllGroups();
         setContacts(contactData);
         setGroups(groupsData);
 
